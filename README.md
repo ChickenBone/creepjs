@@ -442,3 +442,41 @@ client/
 server/
   └── server.js
 ```
+
+### Usage Examples
+
+#### `/decrypt` Endpoint
+
+To use the `/decrypt` endpoint, send a POST request with the fingerprint data in the request body. The endpoint will capture the metrics and render the data to the SQLite database.
+
+Example:
+
+```bash
+curl -X POST http://localhost:8000/decrypt -H "Content-Type: application/json" -d '{
+  "fingerprint": "example_fingerprint_data"
+}'
+```
+
+#### `/fp` Endpoint
+
+To use the `/fp` endpoint, send a POST request with the fingerprint data in the request body. The endpoint will compute a fingerprint profile and handle suspicious patterns.
+
+Example:
+
+```bash
+curl -X POST http://localhost:8000/fp -H "Content-Type: application/json" -d '{
+  "fingerprint": "example_fingerprint_data"
+}'
+```
+
+#### `/analysis` Endpoint
+
+To use the `/analysis` endpoint, send a POST request with the fingerprint data in the request body. The endpoint will create a hidden fingerprint profile and collect unique data.
+
+Example:
+
+```bash
+curl -X POST http://localhost:8000/analysis -H "Content-Type: application/json" -d '{
+  "fingerprint": "example_fingerprint_data"
+}'
+```

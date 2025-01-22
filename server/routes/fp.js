@@ -1,0 +1,27 @@
+const express = require('express');
+const router = express.Router();
+const { getFingerprint, saveFingerprint } = require('../database');
+
+router.post('/', async (req, res) => {
+  const { fingerprint, profile } = req.body;
+
+  if (!fingerprint || !profile) {
+    return res.status(400).json({ error: 'Fingerprint and profile data are required' });
+  }
+
+  try {
+    const existingFingerprint = await getFingerprint(fingerprint);
+
+    if (existingFingerprint) {
+      // Handle suspicious patterns or update existing profile
+      // Add your logic here
+    } else {
+      const fingerprintId = await saveFingerprint(fingerprint, profile);
+      res.status(201).json({ message: 'Fingerprint saved', fingerprintId });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to save fingerprint' });
+  }
+});
+
+module.exports = router;
