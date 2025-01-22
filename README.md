@@ -431,3 +431,14 @@ Contributions are welcome.
 🟦 release to GitHub pages `yarn build`<br>
 
 If you would like to test on a secure connection, GitHub Codespaces is supported. It is discouraged to host a copy of this repo on a personal site. The goal of this project is to conduct research and provide education, not to create a fingerprinting library.
+
+## Directory Structure
+
+```
+client/
+  ├── docs/
+  ├── public/
+  └── src/
+server/
+  └── server.js
+```
